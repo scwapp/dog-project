@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dog Breed Detector</title>
+    <style>
+        .text-and-image {
+            display: flex;
+            align-items: center;
+        }
+        .text-and-image img {
+            margin-right: 16px;
+            max-width: 50%;
+            object-fit: contain;
+        }
+        .text-and-image p {
+            margin-bottom: 10px;
+        }
+        .detection-box {
+            background-color: lightgray;
+            border: 1px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .detection-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .detection-value {
+            font-size: 16px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Dog Breed Detector</h1>
+
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="fileInput" style="display:inline-block; padding:8px 16px; outline:none; color:#fff; background-color:#5cb85c; border-color:#4cae4c; border-radius:5px; cursor:pointer;">
+            Select Image
+        </label>
+        <input type="file" id="fileInput" name="image" accept="image/*" onchange="this.form.submit()" style="display:none;">
+
+    </form>
+    <hr>
+    <div class="text-and-image">
+        <img src="{{ url_for('static', filename='images/uploaded_image.jpg') }}" id="displayedImage">
+    
+
+        <div>
+            <div class="detection-box">
+                <div class="detection-title">What was detected</div>
+                <div class="detection-value">{{ human_or_dog }}</div>
+            </div>
+            <div class="detection-box">
+                <div class="detection-title">Dog breed</div>
+                <div class="detection-value">{{ dog_breed }}</div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
